@@ -26,5 +26,22 @@ class BinaryNode:
         return A.parent
 
     def predecessorA(A):
-        if A.left:  return A.subtree_last(A.left)
-        else:       return None
+        if A.left:  return A.left.subtree_last()
+        while A.parent and A is A.parent.left:
+            A = A.parent
+        return A.parent
+
+    def subtree_insert_before(A, B):
+        if A.left:
+            A = A.sibtree_last()
+            A.rigjht, B.paretnt = B, A
+
+        else:
+            A.left, B.parent = B, A
+    
+    def subtree_insert_after(A, B):
+        if A.right:
+            A = A.subtree_first()
+            A.left, B.parent = B, A
+        else:
+            A.right, B.parent = B, A
