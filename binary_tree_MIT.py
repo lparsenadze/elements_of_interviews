@@ -89,9 +89,19 @@ class BinaryTree:
                 yield node
                 node = node.successor()
 
-Tree = BinaryTree()
-Tree.build(['F', 'D', 'B', 'E', 'A', 'C'])
-for node in Tree.tree_iter():
-    print(node.item)
+class BSTNode(BinaryNode):
+    def subtree_find(A, k):
+        if k < A.item.key:
+            A.left.subtree_find(k)
+        elif k > A.item.key:
+            A.right.subtree_find(k)
+        else:
+            return A.item()
+
+
+#Tree = BinaryTree()
+#Tree.build(['F', 'D', 'B', 'E', 'A', 'C'])
+#for node in Tree.tree_iter():
+#    print(node.item)
 
 
